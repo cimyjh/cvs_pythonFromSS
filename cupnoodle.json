@@ -1,0 +1,7 @@
+{
+    "products":[
+        {"pnum" : "1", "pname" : "신라면", "pprice" : 800},
+        {"pnum" : "2", "pname" : "진라면", "pprice" : 800},
+        {"pnum" : "3", "pname" : "비빔면", "pprice" : 700}
+    ]
+}

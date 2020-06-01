@@ -1,5 +1,6 @@
 #product.py
 from printText import PrintText
+import json
 
 #자식 제품의 원형 클래스
 class Product:
@@ -7,12 +8,25 @@ class Product:
     PRICE_UNIT = 100
     
     _name = ''
+    _productName = {}
+    _productValue = {}
 
-    def __init__(self, name, productName, productValue):
+    def __init__(self, name, filename):
         self._name = name
-        self._productName = productName
-        self._productValue = productValue
-        print(PrintText.title % self._name)
+        try:
+            with open(filename, 'rt', encoding='utf-8') as ptr:
+                json_data = json.load(ptr)
+                _list = json_data['products']
+                for product in _list:   
+                    temp = {}
+                    temp[product['pnum']] = product['pname']   
+                    self._productName.update(temp)
+                    temp = {}
+                    temp[product['pnum']] = product['pprice']   # '1' : 300
+                    self._productValue.update(temp)
+        except :
+            print('Exception')
+        else : print(PrintText.title % self._name)
 
     def run(self):
         while True:

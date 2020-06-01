@@ -1,11 +1,12 @@
 #main.py
 from coffee import Coffee
 from snack import Snack
+from cupnoodle import CupNoodle
 from printText import PrintText
 import sys
 
 if __name__ == '__main__':
-    print('1:커피, \t2:과자')
+    print('1:커피, \t2:과자', '\t3:컵라면')
     choice = input('구동할 자판기를 선택 하세요 >> ').strip()
 
     if choice == '1':
@@ -14,6 +15,8 @@ if __name__ == '__main__':
     elif choice == '2':
         vm = Snack()
 
+    elif choice == '3':
+        vm = CupNoodle()
     else :
         print(PrintText.select_falut)
         sys.exit(-1)

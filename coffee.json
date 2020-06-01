@@ -1,7 +1,9 @@
 {
     "products":[
-        {"pnum":"1", "pname":"신라면", "pprice" : "800"}
-        {"pnum":"1", "pname":"신라면", "pprice" : "800"}
-        {"pnum":"1", "pname":"신라면", "pprice" : "800"}
+        {"pnum" : "1", "pname":"밀크커피", "pprice": 400},
+        {"pnum" : "2", "pname":"설탕커피", "pprice": 300},
+        {"pnum" : "3", "pname":"프림커피", "pprice": 400},
+        {"pnum" : "4", "pname":"블랙커피", "pprice": 200},
+        {"pnum" : "5", "pname":"원두커피", "pprice": 500}
     ]
 }

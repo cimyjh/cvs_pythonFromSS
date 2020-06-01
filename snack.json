@@ -1,0 +1,9 @@
+{
+    "products":[
+        {"pnum" : "1", "pname":"오감자", "pprice": 400},
+        {"pnum" : "2", "pname":"오징어땅콩", "pprice": 500},
+        {"pnum" : "3", "pname":"빼빼로", "pprice": 600},
+        {"pnum" : "4", "pname":"칸쵸", "pprice": 500},
+        {"pnum" : "5", "pname":"맛동산", "pprice": 600}
+    ]
+}
