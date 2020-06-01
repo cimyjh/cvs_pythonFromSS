@@ -1,6 +1,6 @@
 #product.py
 from printText import PrintText
-import json
+import sqlite3
 
 #자식 제품의 원형 클래스
 class Product:
@@ -11,22 +11,27 @@ class Product:
     _productName = {}
     _productValue = {}
 
-    def __init__(self, name, filename):
+    def __init__(self, name, cursor):
         self._name = name
         try:
-            with open(filename, 'rt', encoding='utf-8') as ptr:
-                json_data = json.load(ptr)
-                _list = json_data['products']
-                for product in _list:   
-                    temp = {}
-                    temp[product['pnum']] = product['pname']   
-                    self._productName.update(temp)
-                    temp = {}
-                    temp[product['pnum']] = product['pprice']   # '1' : 300
-                    self._productValue.update(temp)
+            if self._name == '커피':
+                sql = "SELECT pnum, pname, pprice FROM CoffeeProduct"
+            elif self._name == '과자' : 
+                sql = "SELECT pnum, pname, pprice FROM SnackProduct"
+            cursor.execute(sql)
+            row = cursor.fetchone()
+            while row :
+                temp = {}
+                temp[row[0]] = row[1]  #1:밀크커피
+                self._productName.update(temp)
+                temp = {}
+                temp[row[0]] = row[2]   #1: 300
+                self._productValue.update(temp)
+                row = cursor.fetchone()
         except :
             print('Exception')
-        else : print(PrintText.title % self._name)
+        else : 
+            print(PrintText.title % self._name) #커피(과자)자동판매기입니다.
 
     def run(self):
         while True:
@@ -43,12 +48,12 @@ class Product:
         #제품의 종류를 리스트로 만들어서 유저에게 보여주자.
         description = ''
         for num, pname in self._productName.items():
-            price = self.selectValue(num.strip())
+            price = self.selectValue(num)
             description += PrintText.product % (str(num), pname, str(price))
 
         print(description)
-        selectedNumber = input(PrintText.select_product)
-        price = self.selectValue(selectedNumber)  #번호에 대한 해당 상품의 가격 알아오기
+        selectedNumber = input(PrintText.select_product)  #원하시는 상품번호를 선택하세요.
+        price = self.selectValue(int(selectedNumber))  #번호에 대한 해당 상품의 가격 알아오기
 
         if price :
             pname = self.selectName(selectedNumber)
@@ -67,7 +72,7 @@ class Product:
     def selectName(self, inputNum):
         pname = None
         for num, name in self._productName.items():
-            if str(num).strip() == str(inputNum):
+            if str(num) == inputNum:
                 pname = name
 
         return pname
