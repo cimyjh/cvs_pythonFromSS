@@ -28,3 +28,10 @@
 - json작업
   - product __init__에서 json with open 한다.
   - _productName, _productValue로 json으로 받은 값을 파이썬에서 저장한다.
+
+- DB 사용
+  - main에서 dbinit 실행해서 DB관련 __init__을 수행한다.
+  - conn을 sqlite3 연결로 지정
+  - cursor를 하위 클래스에 파라미터로 넘겨준다.
+  - 상위 클래스에서 cursor.execure(sql)문으로 쿼리를 날린다.
+  - cursor.fetchone으로 값을 가져온다.
