@@ -7,8 +7,7 @@
   - vm.run을 통해 하위클래스(커피, 스낵) -> 상위클래스의 run() 메소드 실행
   - 예외처리를 사용해서 프로그램 종료를 정의 했다.
 
-
-
+                 
 - printText:  
   - enum과 같은 효과를 냈다.
   - UI에 대한 인터페이스를 구현했다.
@@ -24,3 +23,8 @@
   - selectName(): 계산 후 pname반환
 
   - payment(): 잔고 계산. 돈 부족 했을 때의 예외처리
+
+
+- json작업
+  - product __init__에서 json with open 한다.
+  - _productName, _productValue로 json으로 받은 값을 파이썬에서 저장한다.
